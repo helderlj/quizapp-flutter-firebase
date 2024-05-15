@@ -1,7 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quizapp/firebase_options.dart';
 import 'package:quizapp/routes.dart';
+import 'package:quizapp/services/firestore.dart';
+import 'package:quizapp/services/models.dart';
+import 'package:quizapp/shared/loading.dart';
 import 'package:quizapp/theme.dart';
 
 Future<void> main() async {
@@ -31,14 +35,21 @@ class _MainAppState extends State<MainApp> {
           return Text("Erro ao tentar recuperar informacoes");
         }
 
+        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            theme: appTheme,
-            routes: appRoutes,
+          return StreamProvider(
+            create: (_) => FirestoreService().streamReport(),
+            catchError: (_, err) => Report(),
+            initialData: Report(),
+            child: MaterialApp(
+                debugShowCheckedModeBanner: true,
+                routes: appRoutes,
+                theme: appTheme),
           );
         }
 
-        return Text("Carregando");
+        // Otherwise, show something whilst waiting for initialization to complete
+        return const MaterialApp(home: LoadingScreen());
       },
     );
   }

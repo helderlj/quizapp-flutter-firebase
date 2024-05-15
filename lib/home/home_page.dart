@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/login/login_page.dart';
-import 'package:quizapp/service/auth_service.dart';
+import 'package:quizapp/services/auth_service.dart';
 import 'package:quizapp/topics/topics_page.dart';
 
 class HomePage extends StatefulWidget {

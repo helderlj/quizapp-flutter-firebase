@@ -20,6 +20,7 @@ dependencies:
   sign_in_with_apple: 
   crypto: 
   json_annotation:
+  rxdart: 
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - assets/
+  - assets/covers/
+  - assets/congrats.gif
