@@ -42,9 +42,10 @@ class _MainAppState extends State<MainApp> {
             catchError: (_, err) => Report(),
             initialData: Report(),
             child: MaterialApp(
-                debugShowCheckedModeBanner: true,
-                routes: appRoutes,
-                theme: appTheme),
+              debugShowCheckedModeBanner: true,
+              routes: appRoutes,
+              theme: appTheme,
+            ),
           );
         }
 

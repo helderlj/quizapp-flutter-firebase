@@ -58,7 +58,9 @@ class QuizList extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (BuildContext context) => QuizPage(),
+                    builder: (BuildContext context) => QuizPage(
+                      quizId: quiz.id,
+                    ),
                   ),
                 );
               },
